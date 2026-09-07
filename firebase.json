@@ -1,0 +1,11 @@
+{
+  "firestore": {
+    "database": "(default)",
+    "location": "nam5",
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "extensions": {
+    "firestore-stripe-payments": "invertase/firestore-stripe-payments@0.3.12"
+  }
+}
