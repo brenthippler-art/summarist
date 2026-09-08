@@ -6,7 +6,12 @@ import { FaUser } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { useAppDispatch } from "@/lib/redux/hooks";
 import { closeAuthModal } from "@/lib/redux/slices/modalSlice";
-import { loginWithEmail, loginAsGuest, loginWithGoogle, resetPassword } from "@/lib/firebase/auth";
+import {
+  loginWithEmail,
+  loginAsGuest,
+  loginWithGoogle,
+  resetPassword,
+} from "@/lib/firebase/auth";
 import { getAuthErrorMessage } from "@/lib/firebase/authErrors";
 
 export default function LoginForm() {
@@ -45,7 +50,9 @@ export default function LoginForm() {
 
   const handleForgotPassword = async () => {
     if (!email) {
-      setError("Enter your email address above, then click Forgot your password?.");
+      setError(
+        "Enter your email address above, then click Forgot your password?.",
+      );
       return;
     }
     setError("");
@@ -60,18 +67,22 @@ export default function LoginForm() {
 
   return (
     <>
-      <h2 className="text-xl font-bold text-center text-[#032b41] mb-6">
+      <h2 className="text-xl font-bold text-center text-brand-navy mb-6">
         Log in to Summarist
       </h2>
 
-      {error && <p className="text-red-600 text-sm text-center mb-4">{error}</p>}
-      {message && <p className="text-green-600 text-sm text-center mb-4">{message}</p>}
+      {error && (
+        <p className="text-red-600 text-sm text-center mb-4">{error}</p>
+      )}
+      {message && (
+        <p className="text-green-600 text-sm text-center mb-4">{message}</p>
+      )}
 
       <button
         type="button"
         onClick={() => runAuthAction(loginAsGuest)}
         disabled={isSubmitting}
-        className="w-full h-10 rounded bg-[#4054b2] text-white font-semibold flex items-center overflow-hidden mb-4 hover:bg-[#2f3d85] disabled:opacity-60"
+        className="w-full h-10 rounded bg-brand-indigo text-white font-semibold flex items-center overflow-hidden mb-4 hover:bg-brand-indigo-dark disabled:opacity-60"
       >
         <span className="w-10 flex items-center justify-center shrink-0">
           <FaUser size={24} />
@@ -111,16 +122,20 @@ export default function LoginForm() {
           placeholder="Email Address"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="border border-gray-300 rounded h-11 px-4 w-full outline-none focus:border-[#2bd97c] focus:ring-1 focus:ring-[#2bd97c]"
+          className="border border-gray-300 rounded h-11 px-4 w-full outline-none focus:border-brand-green focus:ring-1 focus:ring-brand-green"
         />
         <input
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="border border-gray-300 rounded h-11 px-4 w-full outline-none focus:border-[#2bd97c] focus:ring-1 focus:ring-[#2bd97c]"
+          className="border border-gray-300 rounded h-11 px-4 w-full outline-none focus:border-brand-green focus:ring-1 focus:ring-brand-green"
         />
-        <button type="submit" disabled={isSubmitting} className="btn mt-1 disabled:opacity-60">
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className="btn mt-1 disabled:opacity-60"
+        >
           {isSubmitting ? "Logging in..." : "Login"}
         </button>
       </form>

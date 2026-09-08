@@ -15,7 +15,7 @@ export default function BookSummary({ summary }: { summary: string }) {
 
   return (
     <p
-      className="text-[#032b41] leading-relaxed whitespace-pre-line"
+      className="text-brand-navy leading-relaxed whitespace-pre-line"
       style={{ fontSize: FONT_SIZE_PX[fontSize] }}
     >
       {summary}

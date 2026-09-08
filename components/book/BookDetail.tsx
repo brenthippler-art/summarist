@@ -71,31 +71,33 @@ export default function BookDetail({ book }: { book: Book }) {
         />
       </div>
       <div className="flex-1 max-w-[620px]">
-        <h1 className="text-3xl font-bold text-[#032b41] mb-2">{book.title}</h1>
-        <p className="font-bold text-[#032b41] mb-2">{book.author}</p>
-        <p className="text-[#032b41] text-xl font-light mb-4">
+        <h1 className="text-3xl font-bold text-brand-navy mb-2">
+          {book.title}
+        </h1>
+        <p className="font-bold text-brand-navy mb-2">{book.author}</p>
+        <p className="text-brand-navy text-xl font-light mb-4">
           {book.subTitle}
         </p>
 
         <div className="flex items-center gap-16 py-4 border-y border-gray-200 mb-6">
           <div className="flex flex-col gap-4 font-bold">
-            <span className="flex items-center gap-2 text-sm text-[#032b41]">
-              <FiStar className="text-[#032b41]" size={24} />
+            <span className="flex items-center gap-2 text-sm text-brand-navy">
+              <FiStar className="text-brand-navy" size={24} />
               {book.averageRating} ({book.totalRating} ratings)
             </span>
-            <span className="flex items-center gap-2 text-sm text-[#032b41]">
+            <span className="flex items-center gap-2 text-sm text-brand-navy">
               <FiMic size={24} />
               {book.type}
             </span>
           </div>
           <div className="flex flex-col gap-2">
             {duration !== null && (
-              <span className="flex items-center gap-2 text-sm text-[#032b41]">
+              <span className="flex items-center gap-2 text-sm text-brand-navy">
                 <FiClock size={24} />
                 {formatTime(duration)}
               </span>
             )}
-            <span className="flex items-center gap-2 text-sm text-[#032b41] font-bold">
+            <span className="flex items-center gap-2 text-sm text-brand-navy font-bold">
               <HiOutlineLightBulb size={24} />
               {book.keyIdeas} Key ideas
             </span>
@@ -105,14 +107,14 @@ export default function BookDetail({ book }: { book: Book }) {
         <div className="flex items-center gap-4 mb-4">
           <button
             onClick={handleReadOrListen}
-            className="flex items-center gap-2 bg-[#032b41] text-white px-10 h-11 rounded font-medium hover:opacity-90"
+            className="flex items-center gap-2 bg-brand-navy text-white px-10 h-11 rounded font-medium hover:opacity-90"
           >
             <FiBookOpen size={16} />
             Read
           </button>
           <button
             onClick={handleReadOrListen}
-            className="flex items-center gap-2 bg-[#032b41] text-white px-6 h-11 rounded font-medium hover:opacity-90"
+            className="flex items-center gap-2 bg-brand-navy text-white px-6 h-11 rounded font-medium hover:opacity-90"
           >
             <FiMic size={16} />
             Listen
@@ -127,27 +129,27 @@ export default function BookDetail({ book }: { book: Book }) {
           {isSaved ? "Remove from My Library" : "Add title to My Library"}
         </button>
 
-        <h2 className="font-bold text-lg text-[#032b41] mb-3">
+        <h2 className="font-bold text-lg text-brand-navy mb-3">
           What&apos;s it about?
         </h2>
         <div className="flex gap-3 mb-6">
-          {book.tags.map((tag) => (
+          {book.tags.map((tag: string) => (
             <button
               key={tag}
               type="button"
               disabled
-              className="bg-gray-100 text-[#032b41] text-base font-medium px-4 py-2 rounded-b-lg cursor-not-allowed disabled:opacity-100"
+              className="bg-gray-100 text-brand-navy text-base font-medium px-4 py-2 rounded-b-lg cursor-not-allowed disabled:opacity-100"
             >
               {tag}
             </button>
           ))}
         </div>
 
-        <p className="text-[#032b41] leading-relaxed mb-8 whitespace-pre-line">
+        <p className="text-brand-navy leading-relaxed mb-8 whitespace-pre-line">
           {book.bookDescription}
         </p>
 
-        <h2 className="font-bold text-[#032b41] text-lg mb-3">
+        <h2 className="font-bold text-brand-navy text-lg mb-3">
           About the author
         </h2>
         <p className="text-gray-700 leading-relaxed">

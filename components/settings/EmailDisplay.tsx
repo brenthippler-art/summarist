@@ -7,8 +7,8 @@ export default function EmailDisplay() {
 
   return (
     <div className="py-6">
-      <h2 className="font-bold text-[#032b41] mb-2">Email</h2>
-      <p className="text-[#032b41]">{email}</p>
+      <h2 className="font-bold text-brand-navy mb-2">Email</h2>
+      <p className="text-brand-navy">{email}</p>
     </div>
   );
 }

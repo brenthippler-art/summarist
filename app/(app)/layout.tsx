@@ -42,7 +42,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
               type="button"
               onClick={() => setIsMobileNavOpen(true)}
               aria-label="Open menu"
-              className="md:hidden text-[#032b41]"
+              className="md:hidden text-brand-navy"
             >
               <FiMenu size={24} />
             </button>

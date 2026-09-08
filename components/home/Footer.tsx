@@ -5,7 +5,12 @@ const footerColumns = [
   },
   {
     title: "Useful Links",
-    links: ["Pricing", "Summarist Business", "Gift Cards", "Authors & Publishers"],
+    links: [
+      "Pricing",
+      "Summarist Business",
+      "Gift Cards",
+      "Authors & Publishers",
+    ],
   },
   {
     title: "Company",
@@ -37,7 +42,9 @@ export default function Footer() {
             ))}
           </div>
           <div className="footer__copyright--wrapper">
-            <div className="footer__copyright">Copyright &copy; 2026 Summarist.</div>
+            <div className="footer__copyright">
+              Copyright &copy; 2026 Summarist.
+            </div>
           </div>
         </div>
       </div>

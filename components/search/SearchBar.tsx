@@ -25,10 +25,11 @@ function SearchResultRow({ book }: { book: Book }) {
           alt={book.title}
           fill
           className="object-contain"
+          sizes="44px"
         />
       </div>
       <div className="min-w-0">
-        <p className="text-base font-medium text-[#032b41] py-1">
+        <p className="text-base font-medium text-brand-navy py-1">
           {book.title}
         </p>
         <p className="text-sm text-gray-400 truncate">{book.author}</p>
@@ -79,7 +80,7 @@ export default function SearchBar() {
   const showDropdown = query.trim().length > 0;
 
   return (
-<div className="relative w-[220px] sm:w-[280px] md:w-[330px]">
+    <div className="relative w-[220px] sm:w-[280px] md:w-[330px]">
       <div className="flex items-center border-2 border-gray-300 rounded-lg">
         <input
           type="text"
@@ -93,23 +94,25 @@ export default function SearchBar() {
             type="button"
             onClick={() => setQuery("")}
             aria-label="Clear search"
-            className="w-10 h-10 flex items-center justify-center border-l border-gray-300 bg-gray-100 text-[#032b41] hover:text-gray-700 rounded-r-lg"
+            className="w-10 h-10 flex items-center justify-center border-l border-gray-300 bg-gray-100 text-brand-navy hover:text-gray-700 rounded-r-lg"
           >
             <FiX size={24} />
           </button>
         ) : (
-          <span className="w-10 h-10 flex items-center justify-center border-l bg-gray-100 text-[#032b41] border-gray-300 rounded-r-lg">
+          <span className="w-10 h-10 flex items-center justify-center border-l bg-gray-100 text-brand-navy border-gray-300 rounded-r-lg">
             <FiSearch size={18} />
           </span>
         )}
       </div>
 
       {showDropdown && (
-<div className="absolute top-full right-0 mt-2 w-[90vw] max-w-[420px] bg-white border border-gray-200 rounded-lg shadow-lg z-20">
+        <div className="absolute top-full right-0 mt-2 w-[90vw] max-w-[420px] bg-white border border-gray-200 rounded-lg shadow-lg z-20">
           {isLoading ? (
             <SearchResultsSkeleton />
           ) : results.length === 0 ? (
-            <p className="p-4 text-sm text-gray-500 font-light">No books found</p>
+            <p className="p-4 text-sm text-gray-500 font-light">
+              No books found
+            </p>
           ) : (
             <div className="divide-y divide-gray-100 max-h-[620px] font-light overflow-y-auto">
               {results.map((book) => (

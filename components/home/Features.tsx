@@ -78,7 +78,8 @@ export default function Features() {
               <div className="statistics__data">
                 <div className="statistics__data--number">93%</div>
                 <div className="statistics__data--title">
-                  of Summarist members <b>significantly increase</b> reading frequency.
+                  of Summarist members <b>significantly increase</b> reading
+                  frequency.
                 </div>
               </div>
               <div className="statistics__data">
@@ -101,22 +102,22 @@ export default function Features() {
               <div className="statistics__data">
                 <div className="statistics__data--number">91%</div>
                 <div className="statistics__data--title">
-                  of Summarist members <b>report feeling more productive</b> after
-                  incorporating the service into their daily routine.
+                  of Summarist members <b>report feeling more productive</b>{" "}
+                  after incorporating the service into their daily routine.
                 </div>
               </div>
               <div className="statistics__data">
                 <div className="statistics__data--number">94%</div>
                 <div className="statistics__data--title">
-                  of Summarist members have <b>noticed an improvement</b> in their overall
-                  comprehension and retention of information.
+                  of Summarist members have <b>noticed an improvement</b> in
+                  their overall comprehension and retention of information.
                 </div>
               </div>
               <div className="statistics__data">
                 <div className="statistics__data--number">88%</div>
                 <div className="statistics__data--title">
-                  of Summarist members <b>feel more informed</b> about current events and
-                  industry trends since using the platform.
+                  of Summarist members <b>feel more informed</b> about current
+                  events and industry trends since using the platform.
                 </div>
               </div>
             </div>

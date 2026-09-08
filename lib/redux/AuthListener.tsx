@@ -24,17 +24,26 @@ export default function AuthListener() {
 
         if (user.email === GUEST_EMAIL) {
           // Guest is a demo account — always treated as top-tier subscribed
-          dispatch(setSubscriptionStatus({ isSubscribed: true, planKey: "yearly" }));
+          dispatch(
+            setSubscriptionStatus({ isSubscribed: true, planKey: "yearly" }),
+          );
         } else {
-          const subsRef = collection(db, "customers", user.uid, "subscriptions");
+          const subsRef = collection(
+            db,
+            "customers",
+            user.uid,
+            "subscriptions",
+          );
           const activeSubsQuery = query(
             subsRef,
-            where("status", "in", ["trialing", "active"])
+            where("status", "in", ["trialing", "active"]),
           );
 
           unsubscribeSubscription = onSnapshot(activeSubsQuery, (snapshot) => {
             if (snapshot.empty) {
-              dispatch(setSubscriptionStatus({ isSubscribed: false, planKey: null }));
+              dispatch(
+                setSubscriptionStatus({ isSubscribed: false, planKey: null }),
+              );
               return;
             }
 
@@ -46,8 +55,8 @@ export default function AuthListener() {
               priceId === PLANS.yearly.priceId
                 ? "yearly"
                 : priceId === PLANS.monthly.priceId
-                ? "monthly"
-                : null;
+                  ? "monthly"
+                  : null;
 
             dispatch(setSubscriptionStatus({ isSubscribed: true, planKey }));
           });

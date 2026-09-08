@@ -12,7 +12,7 @@ export default function SettingsPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-[#032b41] mb-4 pb-4 border-b border-gray-200">
+      <h1 className="text-2xl font-bold text-brand-navy mb-4 pb-4 border-b border-gray-200">
         Settings
       </h1>
 
@@ -24,9 +24,10 @@ export default function SettingsPage() {
               alt="Login required"
               fill
               className="object-contain"
+              sizes="460px"
             />
           </div>
-          <p className="font-bold text-[#032b41] text-2xl pb-4">
+          <p className="font-bold text-brand-navy text-2xl pb-4">
             Log in to your account to see your details.
           </p>
           <button

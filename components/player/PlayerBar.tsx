@@ -46,7 +46,7 @@ export default function PlayerBar({ book }: { book: Book }) {
       <button
         onClick={togglePlay}
         aria-label={isPlaying ? "Pause" : "Play"}
-        className="w-10 h-10 rounded-full bg-white text-[#032b41] flex items-center justify-center"
+        className="w-10 h-10 rounded-full bg-white text-brand-navy flex items-center justify-center"
       >
         {isPlaying ? <FaPause size={22} /> : <FaPlay size={22} />}
       </button>
@@ -64,6 +64,7 @@ export default function PlayerBar({ book }: { book: Book }) {
           alt={book.title}
           fill
           className="object-contain"
+          sizes="44px"
         />
       </div>
       <div>
@@ -74,7 +75,7 @@ export default function PlayerBar({ book }: { book: Book }) {
   );
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-[#042330] text-white z-30">
+    <div className="fixed bottom-0 left-0 right-0 bg-brand-navy-dark text-white z-30">
       {/* md and up: original three-column grid */}
       <div className="hidden md:grid grid-cols-[1fr_auto_1fr] items-center gap-6 px-6 h-20">
         <div className="flex items-center gap-3 md:flex-wrap md:min-w-0">

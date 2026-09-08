@@ -10,7 +10,8 @@ const FAQS = [
       "Begin your complimentary 7-day trial with a Summarist annual membership. You are under no obligation to continue your subscription, and you will only be billed when the trial period expires. With Premium access, you can learn at your own pace and as frequently as you desire, and you may terminate your subscription prior to the conclusion of the 7-day free trial.",
   },
   {
-    question: "Can I switch subscriptions from monthly to yearly, or yearly to monthly?",
+    question:
+      "Can I switch subscriptions from monthly to yearly, or yearly to monthly?",
     answer:
       "Yes, you can switch between plans at any time from your account settings. Changes take effect at the start of your next billing cycle.",
   },
@@ -40,11 +41,15 @@ export default function FaqAccordion() {
               onClick={() => setOpenIndex(isOpen ? null : index)}
               className="w-full flex items-center justify-between py-5 text-left"
             >
-              <span className="font-medium text-2xl text-[#032b41]">{faq.question}</span>
+              <span className="font-medium text-2xl text-brand-navy">
+                {faq.question}
+              </span>
               {isOpen ? <FiChevronUp size={28} /> : <FiChevronDown size={28} />}
             </button>
             {isOpen && (
-              <p className="text-gray-600 text-md leading-relaxed pb-5">{faq.answer}</p>
+              <p className="text-gray-600 text-md leading-relaxed pb-5">
+                {faq.answer}
+              </p>
             )}
           </div>
         );

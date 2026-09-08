@@ -10,7 +10,11 @@ export default function ForYouPage() {
         title="Recommended For You"
         subtitle="We think you'll like these"
       />
-      <BookRow status="suggested" title="Suggested Books" subtitle="Browse these books" />
+      <BookRow
+        status="suggested"
+        title="Suggested Books"
+        subtitle="Browse these books"
+      />
     </>
   );
 }

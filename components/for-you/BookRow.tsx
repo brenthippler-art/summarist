@@ -38,7 +38,7 @@ export default function BookRow({ status, title, subtitle }: BookRowProps) {
 
   return (
     <section className="mb-10">
-      <h2 className="text-2xl font-bold text-[#032b41] mb-1 pb-3">{title}</h2>
+      <h2 className="text-2xl font-bold text-brand-navy mb-1 pb-3">{title}</h2>
       <p className="text-[#394547] text-lg font-light mb-4">{subtitle}</p>
 
       {error ? (

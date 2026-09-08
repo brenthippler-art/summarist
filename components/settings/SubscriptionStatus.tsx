@@ -16,8 +16,8 @@ export default function SubscriptionStatus() {
 
   return (
     <div className="py-6 border-b border-gray-200">
-      <h2 className="font-bold text-[#032b41] mb-2">Your Subscription plan</h2>
-      <p className="text-[#032b41] mb-4">{planLabel}</p>
+      <h2 className="font-bold text-brand-navy mb-2">Your Subscription plan</h2>
+      <p className="text-brand-navy mb-4">{planLabel}</p>
       {!isSubscribed && (
         <Link href="/choose-plan" className="btn max-w-[220px] inline-flex">
           Upgrade to Premium

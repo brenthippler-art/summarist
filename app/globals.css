@@ -1,6 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
 @import "tailwindcss";
 
+@theme {
+  --color-brand-navy: #032b41;
+  --color-brand-navy-dark: #042330;
+  --color-brand-green: #2bd97c;
+  --color-brand-green-dark: #20ba68;
+  --color-brand-sidebar: #f7faf9;
+  --color-brand-mist: #f1f6f4;
+  --color-brand-blue: #0365f2;
+  --color-brand-indigo: #4054b2;
+  --color-brand-indigo-dark: #2f3d85;
+}
+
 @layer base {
   * {
     margin: 0;
@@ -307,7 +319,7 @@
   .review__stars svg {
     width: 16px;
     height: 16px;
-    fill: #0564f1;
+    fill: var(--color-brand-blue);
   }
 
   .reviews__btn--wrapper {
@@ -386,17 +398,6 @@
     color: #032b41;
   }
 
-  .footer__social--link-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 16px;
-  }
-
-  .footer__social--link {
-    display: flex;
-  }
-
   .footer__link--wrapper {
     margin-bottom: 12px;
     line-height: 1;
@@ -410,30 +411,6 @@
 
   .footer__link--wrapper:last-child {
     margin-bottom: 0;
-  }
-
-  .footer__social--text {
-    margin-bottom: 4px;
-  }
-
-  .footer__social--text b {
-    font-weight: 500;
-  }
-
-  .footer__review--wrapper {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 8px;
-  }
-
-  .footer__social--img-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .footer__social--img {
-    display: flex;
   }
 
   .footer__copyright--wrapper {

@@ -28,7 +28,7 @@ export default function LibraryPage() {
   if (!uid) {
     return (
       <div>
-        <h1 className="text-2xl font-bold text-[#032b41] mb-4 pb-4 border-b border-gray-200">
+        <h1 className="text-2xl font-bold text-brand-navy mb-4 pb-4 border-b border-gray-200">
           My Library
         </h1>
         <div className="w-[460px] h-[402px] mx-auto flex flex-col items-center justify-between py-6">
@@ -40,7 +40,7 @@ export default function LibraryPage() {
               className="object-contain"
             />
           </div>
-          <p className="font-bold text-[#032b41] text-lg">
+          <p className="font-bold text-brand-navy text-lg">
             Log in to your account to see your library.
           </p>
           <button
@@ -61,7 +61,7 @@ export default function LibraryPage() {
   return (
     <div>
       <section className="mb-10">
-        <h2 className="text-xl font-bold text-[#032b41] mb-1">Saved Books</h2>
+        <h2 className="text-xl font-bold text-brand-navy mb-1">Saved Books</h2>
         <p className="text-gray-500 text-md mb-4">
           {savedBooks.length} {savedBooks.length === 1 ? "item" : "items"}
         </p>
@@ -81,7 +81,7 @@ export default function LibraryPage() {
       </section>
 
       <section>
-        <h2 className="text-xl font-bold text-[#032b41] mb-1">
+        <h2 className="text-xl font-bold text-brand-navy mb-1">
           Finished Books
         </h2>
         <p className="text-gray-500 text-sm mb-4">

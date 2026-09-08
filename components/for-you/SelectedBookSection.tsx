@@ -32,7 +32,11 @@ export default function SelectedBookSection() {
 
   if (isLoading) return <SelectedBookSkeleton />;
   if (error || !book) {
-    return <p className="text-red-600 text-sm mb-10">Couldn&apos;t load selected book.</p>;
+    return (
+      <p className="text-red-600 text-sm mb-10">
+        Couldn&apos;t load selected book.
+      </p>
+    );
   }
 
   return <SelectedBook book={book} />;

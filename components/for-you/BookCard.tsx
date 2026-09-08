@@ -16,15 +16,27 @@ export default function BookCard({ book }: { book: Book }) {
 
   return (
     <Link href={`/book/${book.id}`} className="block w-[180px] shrink-0">
-      <div className="flex justify-end mb-2 h-6">{showPill && <BookPill />}</div>
-
-      <div className="relative w-[180px] aspect-square mb-3">
-        <Image src={book.imageLink} alt={book.title} fill className="object-contain" />
+      <div className="flex justify-end mb-2 h-6">
+        {showPill && <BookPill />}
       </div>
 
-      <h3 className="font-bold text-[#032b41] text-base leading-snug mb-1">{book.title}</h3>
+      <div className="relative w-[180px] aspect-square mb-3">
+        <Image
+          src={book.imageLink}
+          alt={book.title}
+          fill
+          sizes="180px"
+          className="object-contain"
+        />
+      </div>
+
+      <h3 className="font-bold text-brand-navy text-base leading-snug mb-1">
+        {book.title}
+      </h3>
       <p className="text-[#6b757b] text-sm font-sans mb-1">{book.author}</p>
-      <p className="text-[#032b41] text-sm font-normal font-sans mb-2">{book.subTitle}</p>
+      <p className="text-brand-navy text-sm font-normal font-sans mb-2">
+        {book.subTitle}
+      </p>
 
       <div className="flex items-center gap-4 text-xs text-gray-500">
         {duration !== null && (

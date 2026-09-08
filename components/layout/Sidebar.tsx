@@ -45,9 +45,15 @@ export default function Sidebar({ onNavigate }: SidebarProps) {
   const isPlayerPage = pathname?.startsWith("/player/");
 
   return (
-    <aside className="w-[260px] md:w-[200px] shrink-0 h-screen md:fixed md:top-0 md:left-0 flex flex-col bg-[#f7faf9]">
+    <aside className="w-[260px] md:w-[200px] shrink-0 h-screen md:fixed md:top-0 md:left-0 flex flex-col bg-brand-sidebar">
       <div className="px-6 py-6 mb-8 flex justify-center">
-        <Image src="/logo.png" alt="logo" width={200} height={46} className="w-[160px] h-auto" />
+        <Image
+          src="/logo.png"
+          alt="logo"
+          width={200}
+          height={46}
+          className="w-[160px] h-auto"
+        />
       </div>
 
       <nav className="flex-1 flex flex-col">
@@ -56,12 +62,12 @@ export default function Sidebar({ onNavigate }: SidebarProps) {
 
           const content = (
             <span
-              className={`flex items-center gap-4 md:gap-3 px-6 py-6 md:py-5 text-lg md:text-md text-[#032b41] ${
+              className={`flex items-center gap-4 md:gap-3 px-6 py-6 md:py-5 text-lg md:text-md text-brand-navy ${
                 isActive
-                  ? "border-l-4 border-[#2bd97c] pl-5 hover:bg-gray-200"
+                  ? "border-l-4 border-brand-green pl-5 hover:bg-gray-200"
                   : href === null
-                  ? "cursor-not-allowed"
-                  : "hover:bg-gray-200"
+                    ? "cursor-not-allowed"
+                    : "hover:bg-gray-200"
               }`}
             >
               <Icon size={24} className="md:hidden" />
@@ -84,8 +90,10 @@ export default function Sidebar({ onNavigate }: SidebarProps) {
       <div className={`flex flex-col mb-6 ${isPlayerPage ? "pb-20" : ""}`}>
         <Link href="/settings" onClick={onNavigate}>
           <span
-            className={`flex items-center gap-4 md:gap-3 px-6 py-6 md:py-5 text-lg md:text-md text-[#032b41] hover:bg-gray-200 ${
-              pathname === "/settings" ? "border-l-4 border-[#2bd97c] pl-5" : ""
+            className={`flex items-center gap-4 md:gap-3 px-6 py-6 md:py-5 text-lg md:text-md text-brand-navy hover:bg-gray-200 ${
+              pathname === "/settings"
+                ? "border-l-4 border-brand-green pl-5"
+                : ""
             }`}
           >
             <FiSettings size={24} className="md:hidden" />
@@ -94,7 +102,7 @@ export default function Sidebar({ onNavigate }: SidebarProps) {
           </span>
         </Link>
         <div>
-          <span className="flex items-center gap-4 md:gap-3 px-6 py-6 md:py-5 text-lg md:text-md text-[#032b41] cursor-not-allowed">
+          <span className="flex items-center gap-4 md:gap-3 px-6 py-6 md:py-5 text-lg md:text-md text-brand-navy cursor-not-allowed">
             <FiHelpCircle size={24} className="md:hidden" />
             <FiHelpCircle size={20} className="hidden md:block" />
             Help &amp; Support
@@ -103,7 +111,7 @@ export default function Sidebar({ onNavigate }: SidebarProps) {
         <button
           type="button"
           onClick={handleAuthClick}
-          className="flex items-center gap-4 md:gap-3 px-6 py-6 md:py-5 text-lg md:text-md text-[#032b41] hover:bg-gray-200 text-left"
+          className="flex items-center gap-4 md:gap-3 px-6 py-6 md:py-5 text-lg md:text-md text-brand-navy hover:bg-gray-200 text-left"
         >
           <FiLogOut size={24} className="md:hidden" />
           <FiLogOut size={20} className="hidden md:block" />

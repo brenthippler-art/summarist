@@ -31,25 +31,25 @@ export default function PlanSelector() {
   }, []);
 
   const handleCheckout = async () => {
-  if (!uid) {
-    dispatch(openAuthModal("login"));
-    return;
-  }
+    if (!uid) {
+      dispatch(openAuthModal("login"));
+      return;
+    }
 
-  setIsLoading(true);
-  try {
-    const plan = PLANS[selected];
-    const url = await createCheckoutSession({
-      uid,
-      priceId: plan.priceId,
-      trialDays: plan.trialDays || undefined,
-    });
-    window.location.assign(url);
-  } catch (err) {
-    console.error("Checkout failed:", err);
-    setIsLoading(false);
-  }
-};
+    setIsLoading(true);
+    try {
+      const plan = PLANS[selected];
+      const url = await createCheckoutSession({
+        uid,
+        priceId: plan.priceId,
+        trialDays: plan.trialDays || undefined,
+      });
+      window.location.assign(url);
+    } catch (err) {
+      console.error("Checkout failed:", err);
+      setIsLoading(false);
+    }
+  };
 
   const ctaContent = (
     <>
@@ -67,7 +67,7 @@ export default function PlanSelector() {
 
   return (
     <div className="max-w-[680px] mx-auto text-center px-6 md:px-0">
-      <h2 className="text-2xl font-bold text-[#032b41] mb-6">
+      <h2 className="text-2xl font-bold text-brand-navy mb-6">
         Choose the plan that fits you
       </h2>
 
@@ -80,25 +80,25 @@ export default function PlanSelector() {
               <button
                 type="button"
                 onClick={() => setSelected(key)}
-                className={`w-full text-left border rounded-lg p-6 bg-[#f1f6f4] ${
-                  isSelected ? "border-[#2bd97c] border-2" : "border-gray-300"
+                className={`w-full text-left border rounded-lg p-6 bg-[brand-mist] ${
+                  isSelected ? "border-brand-green border-2" : "border-gray-300"
                 }`}
               >
                 <div className="flex items-center gap-4">
                   <span
                     className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 ${
-                      isSelected ? "border-[#032b41]" : "border-gray-400"
+                      isSelected ? "border-brand-navy" : "border-gray-400"
                     }`}
                   >
                     {isSelected && (
-                      <span className="w-2.5 h-2.5 rounded-full bg-[#032b41]" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-brand-navy" />
                     )}
                   </span>
                   <div>
-                    <p className="font-bold text-lg text-[#032b41]">
+                    <p className="font-bold text-lg text-brand-navy">
                       {plan.label}
                     </p>
-                    <p className="font-bold text-2xl text-[#032b41]">
+                    <p className="font-bold text-2xl text-brand-navy">
                       {plan.amount}
                     </p>
                     <p className="text-sm text-gray-500">{plan.note}</p>

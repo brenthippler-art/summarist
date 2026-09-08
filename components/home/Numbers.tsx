@@ -14,7 +14,9 @@ export default function Numbers() {
                 <BiCrown />
               </div>
               <div className="numbers__title">3 Million</div>
-              <div className="numbers__sub--title">Downloads on all platforms</div>
+              <div className="numbers__sub--title">
+                Downloads on all platforms
+              </div>
             </div>
             <div className="numbers">
               <div className="numbers__icon numbers__star--icon">

@@ -7,7 +7,7 @@ const SIZES: { value: FontSize; label: string; px: string }[] = [
   { value: "base", label: "Aa", px: "15px" },
   { value: "lg", label: "Aa", px: "18px" },
   { value: "xl", label: "Aa", px: "21px" },
-  { value: "twoxl", label: "Aa", px: "24px" },
+  { value: "two2xl", label: "Aa", px: "24px" },
 ];
 
 export default function FontSizeControl() {
@@ -23,7 +23,7 @@ export default function FontSizeControl() {
           onClick={() => dispatch(setFontSize(value))}
           className={`font-medium ${
             fontSize === value
-              ? "text-[#032b41] border-b-2 border-[#2bd97c]"
+              ? "text-brand-navy border-b-2 border-brand-green"
               : "text-gray-400"
           }`}
           style={{ fontSize: px }}

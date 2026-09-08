@@ -28,7 +28,7 @@ export default function PlanFeatures() {
           key={boldText}
           className="flex flex-col items-center text-center max-w-[90%] md:max-w-[240px]"
         >
-          <Icon size={50} className="text-[#032b41] mb-3" />
+          <Icon size={50} className="text-brand-navy mb-3" />
           <p className="text-md text-[#394547]">
             <span className="font-bold">{boldText}</span>
             {restText}

@@ -42,11 +42,13 @@ export default function RegisterForm() {
 
   return (
     <>
-      <h2 className="text-xl font-bold text-center text-[#032b41] mb-6">
+      <h2 className="text-xl font-bold text-center text-brand-navy mb-6">
         Sign up to Summarist
       </h2>
 
-      {error && <p className="text-red-600 text-sm text-center mb-4">{error}</p>}
+      {error && (
+        <p className="text-red-600 text-sm text-center mb-4">{error}</p>
+      )}
 
       <button
         type="button"
@@ -74,16 +76,20 @@ export default function RegisterForm() {
           placeholder="Email Address"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="border border-gray-300 rounded h-11 px-4 w-full outline-none focus:border-[#2bd97c] focus:ring-1 focus:ring-[#2bd97c]"
+          className="border border-gray-300 rounded h-11 px-4 w-full outline-none focus:border-brand-green focus:ring-1 focus:ring-brand-green"
         />
         <input
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="border border-gray-300 rounded h-11 px-4 w-full outline-none focus:border-[#2bd97c] focus:ring-1 focus:ring-[#2bd97c]"
+          className="border border-gray-300 rounded h-11 px-4 w-full outline-none focus:border-brand-green focus:ring-1 focus:ring-brand-green"
         />
-        <button type="submit" disabled={isSubmitting} className="btn mt-1 disabled:opacity-60">
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className="btn mt-1 disabled:opacity-60"
+        >
           {isSubmitting ? "Signing up..." : "Sign up"}
         </button>
       </form>
