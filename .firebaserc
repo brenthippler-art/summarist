@@ -1,5 +1,13 @@
 {
   "projects": {
     "default": "summarist-2b77e"
+  },
+  "targets": {},
+  "etags": {
+    "summarist-2b77e": {
+      "extensionInstances": {
+        "firestore-stripe-payments": "143c71d63809dfa6f5fba0846fce7dd66aecd774c6cc811cf942b8e8b468815a"
+      }
+    }
   }
 }

@@ -7,10 +7,14 @@ export default function SelectedBook({ book }: { book: Book }) {
   return (
     <section className="mb-10">
       <h2 className="text-2xl font-bold text-[#032b41] mb-4">Selected just for you</h2>
-      <div className="max-w-[680px] bg-[#fbefda] rounded-md flex items-start gap-8 px-8 py-8">
-        <p className="text-[#032b41] font-base flex-l max-w-[220px]">{book.subTitle}</p>
+      <div className="max-w-[680px] bg-[#fbefda] rounded-md flex flex-col md:flex-row items-start gap-4 md:gap-8 px-8 py-8">
+        <p className="md:hidden text-[#032b41] font-base">{book.subTitle}</p>
 
-        <div className="w-px self-stretch bg-[#e0d5c0]" />
+        <p className="hidden md:block text-[#032b41] font-base flex-1 max-w-[220px]">
+          {book.subTitle}
+        </p>
+
+        <div className="hidden md:block w-px self-stretch bg-[#e0d5c0]" />
 
         <Link href={`/book/${book.id}`} className="flex items-start gap-4 hover:opacity-90">
           <Image

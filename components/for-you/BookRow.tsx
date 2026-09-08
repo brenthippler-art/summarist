@@ -42,13 +42,18 @@ export default function BookRow({ status, title, subtitle }: BookRowProps) {
       <p className="text-[#394547] text-lg font-light mb-4">{subtitle}</p>
 
       {error ? (
-        <p className="text-red-600 text-sm">Couldn&apos;t load books. Please try again later.</p>
+        <p className="text-red-600 text-sm">
+          Couldn&apos;t load books. Please try again later.
+        </p>
       ) : (
-        <div className="flex gap-6 overflow-x-auto pb-2">
+        <div className="flex gap-6 overflow-hidden">
           {isLoading
-            ? Array.from({ length: 5 }).map((_, i) => <BookCardSkeleton key={i} />)
-            : books.slice(0, 5).map((book) => <BookCard key={book.id} book={book} />)
-          }
+            ? Array.from({ length: 5 }).map((_, i) => (
+                <BookCardSkeleton key={i} />
+              ))
+            : books
+                .slice(0, 5)
+                .map((book) => <BookCard key={book.id} book={book} />)}
         </div>
       )}
     </section>

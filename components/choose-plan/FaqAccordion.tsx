@@ -30,7 +30,7 @@ export default function FaqAccordion() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <div className="max-w-[900px] mx-auto py-12">
+    <div className="max-w-[900px] mx-auto px-6 py-12">
       {FAQS.map((faq, index) => {
         const isOpen = openIndex === index;
         return (

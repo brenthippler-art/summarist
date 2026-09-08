@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { PLANS, PlanKey } from "@/lib/stripe/plans";
 import { createCheckoutSession } from "@/lib/firebase/checkout";
 import { useAppDispatch, useAppSelector } from "@/lib/redux/hooks";
@@ -9,32 +9,64 @@ import { openAuthModal } from "@/lib/redux/slices/modalSlice";
 export default function PlanSelector() {
   const [selected, setSelected] = useState<PlanKey>("yearly");
   const [isLoading, setIsLoading] = useState(false);
+  const [isDocked, setIsDocked] = useState(false);
   const dispatch = useAppDispatch();
   const uid = useAppSelector((state) => state.auth.uid);
+  const ctaRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const node = ctaRef.current;
+    if (!node) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        const alreadyScrolledPast = entry.boundingClientRect.top < 0;
+        setIsDocked(entry.isIntersecting || alreadyScrolledPast);
+      },
+      { threshold: 0, rootMargin: "0px 0px -50px 0px" },
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
 
   const handleCheckout = async () => {
-    if (!uid) {
-      dispatch(openAuthModal("login"));
-      return;
-    }
+  if (!uid) {
+    dispatch(openAuthModal("login"));
+    return;
+  }
 
-    setIsLoading(true);
-    try {
-      const plan = PLANS[selected];
-      const url = await createCheckoutSession({
-        uid,
-        priceId: plan.priceId,
-        trialDays: plan.trialDays || undefined,
-      });
-      window.location.assign(url);
-    } catch {
-      setIsLoading(false);
-      // TODO: surface a real error message to the user
-    }
-  };
+  setIsLoading(true);
+  try {
+    const plan = PLANS[selected];
+    const url = await createCheckoutSession({
+      uid,
+      priceId: plan.priceId,
+      trialDays: plan.trialDays || undefined,
+    });
+    window.location.assign(url);
+  } catch (err) {
+    console.error("Checkout failed:", err);
+    setIsLoading(false);
+  }
+};
+
+  const ctaContent = (
+    <>
+      <button
+        type="button"
+        onClick={handleCheckout}
+        disabled={isLoading}
+        className="btn max-w-[300px] mx-auto disabled:opacity-60"
+      >
+        {isLoading ? "Loading..." : PLANS[selected].ctaLabel}
+      </button>
+      <p className="text-xs text-gray-500 mt-3">{PLANS[selected].ctaSubtext}</p>
+    </>
+  );
 
   return (
-    <div className="max-w-[680px] mx-auto text-center">
+    <div className="max-w-[680px] mx-auto text-center px-6 md:px-0">
       <h2 className="text-2xl font-bold text-[#032b41] mb-6">
         Choose the plan that fits you
       </h2>
@@ -63,8 +95,12 @@ export default function PlanSelector() {
                     )}
                   </span>
                   <div>
-                    <p className="font-bold text-lg text-[#032b41]">{plan.label}</p>
-                    <p className="font-bold text-2xl text-[#032b41]">{plan.amount}</p>
+                    <p className="font-bold text-lg text-[#032b41]">
+                      {plan.label}
+                    </p>
+                    <p className="font-bold text-2xl text-[#032b41]">
+                      {plan.amount}
+                    </p>
                     <p className="text-sm text-gray-500">{plan.note}</p>
                   </div>
                 </div>
@@ -72,9 +108,9 @@ export default function PlanSelector() {
 
               {index === 0 && (
                 <div className="flex items-center justify-center gap-3 my-4">
-                  <div className="w-26 border-t border-gray-300" />
+                  <div className="w-24 border-t border-gray-300" />
                   <span className="text-sm text-gray-500">or</span>
-                  <div className="w-26 border-t border-gray-300" />
+                  <div className="w-24 border-t border-gray-300" />
                 </div>
               )}
             </div>
@@ -82,18 +118,20 @@ export default function PlanSelector() {
         })}
       </div>
 
-      <div className="sticky bottom-0 bg-white pt-2 pb-8">
-        <button
-          type="button"
-          onClick={handleCheckout}
-          disabled={isLoading}
-          className="btn max-w-[300px] mx-auto disabled:opacity-60"
-        >
-          {isLoading ? "Loading..." : PLANS[selected].ctaLabel}
-        </button>
-        <p className="text-xs text-gray-500 mt-3">
-          {PLANS[selected].ctaSubtext}
-        </p>
+      {/* Floating duplicate — fades out once the real one is reached */}
+      <div
+        className={`fixed bottom-0 left-0 right-0 bg-white pt-2 pb-8 px-6 z-50 transition-opacity duration-300 ${
+          isDocked
+            ? "opacity-0 pointer-events-none"
+            : "opacity-100 pointer-events-auto"
+        }`}
+      >
+        {ctaContent}
+      </div>
+
+      {/* Real, in-flow button — this is what we're watching */}
+      <div ref={ctaRef} className="bg-white pt-2 pb-8">
+        {ctaContent}
       </div>
     </div>
   );

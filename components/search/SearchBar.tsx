@@ -79,14 +79,14 @@ export default function SearchBar() {
   const showDropdown = query.trim().length > 0;
 
   return (
-    <div className="relative w-[330px]">
+<div className="relative w-[220px] sm:w-[280px] md:w-[330px]">
       <div className="flex items-center border-2 border-gray-300 rounded-lg">
         <input
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search for books"
-          className="flex-1 h-10 px-3 outline-none text-sm bg-gray-100 rounded-l-lg"
+          className="flex-1 min-w-0 h-10 px-3 outline-none text-sm bg-gray-100 rounded-l-lg"
         />
         {query ? (
           <button
@@ -105,7 +105,7 @@ export default function SearchBar() {
       </div>
 
       {showDropdown && (
-        <div className="absolute top-full right-0 mt-2 w-[420px] bg-white border border-gray-200 rounded-lg shadow-lg z-20">
+<div className="absolute top-full right-0 mt-2 w-[90vw] max-w-[420px] bg-white border border-gray-200 rounded-lg shadow-lg z-20">
           {isLoading ? (
             <SearchResultsSkeleton />
           ) : results.length === 0 ? (

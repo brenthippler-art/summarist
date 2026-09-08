@@ -60,7 +60,16 @@ export default function BookDetail({ book }: { book: Book }) {
   };
 
   return (
-    <div className="flex gap-12">
+    <div className="flex flex-col min-[993px]:flex-row-reverse gap-12">
+      <div className="w-full min-[993px]:w-[320px] shrink-0 flex justify-center min-[993px]:block order-first">
+        <Image
+          src={book.imageLink}
+          alt={book.title}
+          width={280}
+          height={280}
+          className="w-full min-[993px]:h-auto max-w-[280px]"
+        />
+      </div>
       <div className="flex-1 max-w-[620px]">
         <h1 className="text-3xl font-bold text-[#032b41] mb-2">{book.title}</h1>
         <p className="font-bold text-[#032b41] mb-2">{book.author}</p>
@@ -144,16 +153,6 @@ export default function BookDetail({ book }: { book: Book }) {
         <p className="text-gray-700 leading-relaxed">
           {book.authorDescription}
         </p>
-      </div>
-
-      <div className="w-[320px] shrink-0">
-        <Image
-          src={book.imageLink}
-          alt={book.title}
-          width={280}
-          height={280}
-          className="w-full h-auto"
-        />
       </div>
     </div>
   );

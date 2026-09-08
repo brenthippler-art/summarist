@@ -72,7 +72,7 @@ export default function LibraryPage() {
             You haven&apos;t saved any books yet.
           </p>
         ) : (
-          <div className="flex flex-wrap gap-12">
+          <div className="flex gap-12 overflow-hidden">
             {savedBooks.map((book) => (
               <LibraryBookCard key={book.id} book={book} />
             ))}
@@ -94,7 +94,7 @@ export default function LibraryPage() {
             You haven&apos;t finished any books yet.
           </p>
         ) : (
-          <div className="flex flex-wrap gap-6">
+          <div className="flex gap-6 overflow-hidden">
             {finishedBooks.map((book) => (
               <LibraryBookCard key={book.id} book={book} />
             ))}
