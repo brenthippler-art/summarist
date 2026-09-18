@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Summarist
 
-## Getting Started
+A full-stack audiobook summary platform where users can browse, save, and listen to book summaries — built to a production-app standard, not a tutorial clone.
 
-First, run the development server:
+🔗 [Live Demo] https://summarist-rose-psi.vercel.app/
+
+## Features
+
+- Email/password + Google OAuth authentication (Firebase Auth), plus a guest mode
+- Subscription billing via Stripe (Firebase extension), yearly plan with a 7-day trial and a monthly plan, both wired through a real checkout session flow
+- Personal library: save books, mark as finished, real-time sync via Firestore `onSnapshot`
+- Full audio player: play/pause, skip ±10s, custom-styled scrub bar, adjustable summary text size that persists across the session
+- Debounced search (300ms) with a live results dropdown
+- Fully responsive, including a custom animated mobile navigation drawer built from scratch (no UI library)
+
+## Tech Stack
+
+**Frontend:** Next.js (App Router), TypeScript, Tailwind CSS, Redux Toolkit
+**Backend/Infra:** Firebase (Authentication, Firestore), Stripe (via Firebase Extension), Vercel
+
+## Notable Engineering Details
+
+- Diagnosed and fixed a re-render bug where an inline `onEnded` callback was causing the audio player to recreate its `Audio` object on every tick — solved by moving the callback into a ref, decoupling it from the object-creation effect.
+- Server components fetch book/player data directly; `loading.tsx` boundaries provide route-level skeleton states without manual loading-state plumbing.
+- Subscription tier (Basic/Premium/Premium Plus) is derived by matching the user's Firestore subscription document against known Stripe price IDs — not just stored as a flat flag.
+
+## Running Locally
 
 ```bash
+git clone https://github.com/brenthippler-art/summarist.git
+cd summarist
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+You'll need your own Firebase project (Auth + Firestore) and Stripe test keys configured as environment variables to run the full flow locally.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Author
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Brenton Hippler — Frontend Developer | [brentoncodes.dev](https://brentoncodes.dev)
