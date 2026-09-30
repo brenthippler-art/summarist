@@ -77,6 +77,9 @@ NEXT_PUBLIC_FIREBASE_APP_ID=
 Then run:
 
 ```bash
+git clone https://github.com/brenthippler-art/summarist.git
+cd summarist
+npm install
 npm run dev
 ```
 
